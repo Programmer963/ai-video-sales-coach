@@ -1,39 +1,57 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Upload, BarChart3 } from 'lucide-react';
 
 const Navigation = () => {
   const location = useLocation();
 
-  const navItems = [
-    { path: '/', icon: Home, label: 'Dashboard' },
-    { path: '/upload', icon: Upload, label: 'Upload Video' },
-    { path: '/results', icon: BarChart3, label: 'Results' },
-  ];
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
 
   return (
-    <nav className="bg-white shadow-sm border-b">
+    <nav className="bg-white shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-bold text-blue-600">
-            AI Sales Coach
-          </Link>
+        <div className="flex justify-between items-center py-4">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">AI</span>
+            </div>
+            <h1 className="text-xl font-bold text-gray-800">
+              Video Sales Coach
+            </h1>
+          </div>
           
-          <div className="flex space-x-8">
-            {navItems.map(({ path, icon: Icon, label }) => (
-              <Link
-                key={path}
-                to={path}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  location.pathname === path
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-              >
-                <Icon className="h-4 w-4" />
-                <span>{label}</span>
-              </Link>
-            ))}
+          <div className="flex space-x-6">
+            <Link
+              to="/"
+              className={`px-4 py-2 rounded-lg transition-colors duration-200 ${
+                isActive('/') 
+                  ? 'bg-blue-500 text-white' 
+                  : 'text-gray-600 hover:text-blue-500 hover:bg-blue-50'
+              }`}
+            >
+              Dashboard
+            </Link>
+            <Link
+              to="/upload"
+              className={`px-4 py-2 rounded-lg transition-colors duration-200 ${
+                isActive('/upload') 
+                  ? 'bg-blue-500 text-white' 
+                  : 'text-gray-600 hover:text-blue-500 hover:bg-blue-50'
+              }`}
+            >
+              Upload Video
+            </Link>
+            <Link
+              to="/results"
+              className={`px-4 py-2 rounded-lg transition-colors duration-200 ${
+                isActive('/results') 
+                  ? 'bg-blue-500 text-white' 
+                  : 'text-gray-600 hover:text-blue-500 hover:bg-blue-50'
+              }`}
+            >
+              Results
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
 import VideoUpload from './components/VideoUpload';
 import AnalysisResults from './components/AnalysisResults';
 import Dashboard from './components/Dashboard';
@@ -43,7 +42,6 @@ function App() {
             />
           </Routes>
         </main>
-        <Toaster position="top-right" />
       </div>
     </Router>
   );

@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { Upload, Video, Loader2 } from 'lucide-react';
+import toast from '../utils/toast';
+import { Upload, Video, Loader2 } from './Icons';
 import { analyzeVideo } from '../services/api';
 
 const VideoUpload = ({ onAnalysisComplete }) => {
